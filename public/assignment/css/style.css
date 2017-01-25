@@ -5,3 +5,15 @@ input.form-control {
 body {
     padding-top: 36px;
 }
+
+body.profile {
+	padding-top: 0px;
+}
+
+body.profile header {
+	margin-bottom: 20px;
+}
+
+body.profile footer {
+	bottom: 0px;
+}
