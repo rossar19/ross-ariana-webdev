@@ -3,17 +3,58 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding: 50px 0;
+    height: 100vh;
 }
 
-body.profile {
-	padding-top: 0px;
+main { margin-bottom: 50px; }
+
+.vcenter {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
-body.profile header {
-	margin-bottom: 20px;
+.right {
+	right: 0px;
+	padding: 20px;
 }
 
-body.profile footer {
-	bottom: 0px;
+.left {
+	left: 0px;
+	padding: 20px;
+}
+
+label {
+	margin-top: 10px;
+}
+
+.top-margin {
+	margin-top: 20px;
+}
+
+.glyph-left {
+	padding-left: 40px;
+}
+
+.pos-rel { position: relative; }
+
+aside.container {
+	border-right: solid 1px #e7e7e7;
+	height: 100%;
+}
+.list-group-item { border: none; }
+
+.widget { position: relative; }
+
+.widget-edit {
+	position: absolute;
+	border-radius: 0 0 0 5px;
+	background-color: white;
+	padding: 2px;
+	right: 0;
+}
+
+a:hover {
+	text-decoration: none;
 }

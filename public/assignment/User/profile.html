@@ -2,39 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" />
     <title>Profile</title>
 </head>
-<body class="profile">
-    <header class="bg-primary container">
-        <h3>Profile</h3>
-    </header>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container pos-rel">
+        <div class="navbar-header">
+          <a class="navbar-brand">
+            Profile
+          </a>
+          <a href="profile.html">
+            <span class="pull-right right vcenter glyphicon glyphicon-ok"></span>
+          </a>
+        </div>
+      </div>
+    </nav>
 
     <main class="container">
         <form>
-            <label>Username</label>
-            <input name="username" id="username" type="text" placeholder="username" class="form-control" />
+            <label for="username">Username</label>
+            <input name="username" id="username" type="text" placeholder="johndoe123" class="form-control" />
 
-            <label>Email</label>
-            <input name="email" id="email" type="email" placeholder="email" class="form-control" />
+            <label for="email">Email</label>
+            <input name="email" id="email" type="email" placeholder="johndoe123@gmail.com" class="form-control" />
 
-            <label>First Name</label>
-            <input name="firstName" id="firstName" type="text" placeholder="First Name" class="form-control" />
+            <label for="firstName">First Name</label>
+            <input name="firstName" id="firstName" type="text" placeholder="John" class="form-control" />
 
-            <label>Last Name</label>
-            <input name="lastName" id="lastName" type="text" placeholder="Last Name" class="form-control" />
+            <label for="lastName">Last Name</label>
+            <input name="lastName" id="lastName" type="text" placeholder="Doe" class="form-control" />
 
             <!-- <button type="submit" class="btn btn-primary btn-block">Websites</button>
             <button type="submit" class="btn btn-danger btn-block">Logout</button> -->
 
-            <a href="profile.html" class="btn btn-primary btn-block">Websites</a>
-            <a href="register.html" class="btn btn-danger btn-block">Logout</a>
+            <a href="../website/website-list.html" class="btn btn-primary btn-block top-margin">Websites</a>
+            <a href="login.html" class="btn btn-danger btn-block">Logout</a>
         </form>
     </main>
 
-    <footer class="bg-primary container">
-        test
+    <footer class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container pos-rel">
+        <div class="navbar-header">
+          <a href="profile.html" class="navbar-brand">
+            <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
+          </a>
+        </div>
+      </div>
     </footer>
 
 </body>
