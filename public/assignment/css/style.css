@@ -37,6 +37,11 @@ label {
 	padding-left: 0px;
 }
 
+.navbar-default {
+	background-color: #CDF7C0;
+	border-color: #ACEC99;
+}
+
 .pos-rel { position: relative; }
 
 aside.container {
