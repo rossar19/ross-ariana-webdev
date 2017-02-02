@@ -1,58 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container pos-rel">
+    <div class="navbar-header">
+      <a href="widget-list.html">
+        <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="navbar-brand glyph-left">
+        Widget Edit
+      </a>
+      <a href="widget-list.html">
+        <span class="pull-right right vcenter glyphicon glyphicon-ok"></span>
+      </a>
+    </div>
+  </div>
+</nav>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css" />
-    <title>Widget Edit</title>
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container pos-rel">
-        <div class="navbar-header">
-          <a href="widget-list.html">
-            <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
-          </a>
-          <a class="navbar-brand glyph-left">
-            Widget Edit
-          </a>
-          <a href="widget-list.html">
-            <span class="pull-right right vcenter glyphicon glyphicon-ok"></span>
-          </a>
-        </div>
-      </div>
-    </nav>
+<main class="container">
+    <form>
+        <label for="widgetName">Name</label>
+        <input name="widgetName" id="widgetName" type="text" class="form-control" />
 
-    <main class="container">
-        <form>
-            <label for="widgetName">Name</label>
-            <input name="widgetName" id="widgetName" type="text" class="form-control" />
+        <label for="widgetText">Text</label>
+        <input name="widgetText" id="widgetText" type="text" class="form-control" />
 
-            <label for="widgetText">Text</label>
-            <input name="widgetText" id="widgetText" type="text" class="form-control" />
+        <label for="widgetURL">URL</label>
+        <input name="widgetURL" id="widgetURL" type="url" class="form-control" />
 
-            <label for="widgetURL">URL</label>
-            <input name="widgetURL" id="widgetURL" type="url" class="form-control" />
+        <label for="widgetWidth">Width</label>
+        <input name="widgetWidth" id="widgetWidth" class="form-control" />
+        
+        <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
+        <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
+    </form>
+</main>
 
-            <label for="widgetWidth">Width</label>
-            <input name="widgetWidth" id="widgetWidth" class="form-control" />
-            
-            <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
-            <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
-        </form>
-    </main>
-
-    <footer class="navbar navbar-default navbar-fixed-bottom">
-      <div class="container pos-rel">
-        <div class="navbar-header">
-          <a href="../User/profile.html" class="navbar-brand">
-            <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
-          </a>
-        </div>
-      </div>
-    </footer>
-
-</body>
-</html>
+<footer class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container pos-rel">
+    <div class="navbar-header">
+      <a href="../User/profile.html" class="navbar-brand">
+        <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</footer>
