@@ -22,7 +22,7 @@ main { margin-bottom: 50px; }
 
 .left {
 	left: 0px;
-	padding: 20px;
+	padding: 16px 10px;
 }
 
 label {
@@ -34,7 +34,7 @@ label {
 }
 
 .glyph-left {
-	padding-left: 40px;
+	padding-left: 0px;
 }
 
 .pos-rel { position: relative; }
@@ -54,6 +54,9 @@ aside.container {
 	padding: 2px;
 	right: 0;
 }
+
+.navbar>.container .navbar-brand { margin-left: 0; }
+.navbar>.container .navbar-brand.no-chevron { margin-left: -15px; }
 
 a:hover {
 	text-decoration: none;
