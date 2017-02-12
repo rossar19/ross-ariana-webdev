@@ -2,27 +2,27 @@
   <div class="pos-rel">
 
     <div class="navbar-header col-sm-4 hidden-xs">
-      <a href="#/widget-list">
+      <a href="#/user/{{wEditModel.web.developerId}}/website/">
         <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="navbar-brand glyph-left">
         Websites
       </a>
-      <a href="#/widget-new">
+      <a href="#/user/{{wEditModel.web.developerId}}/website/new">
         <span class="pull-right right vcenter glyphicon glyphicon-plus"></span>
       </a>
     </div>
 
     <div class="navbar-header col-sm-8">
-      <a href="#/widget-list">
+      <a href="#/user/{{wEditModel.web.developerId}}/website/">
           <span class="pull-left left glyphicon glyphicon-chevron-left hidden-sm hidden-md hidden-lg"></span>
       </a>
       <a class="navbar-brand glyph-left">
         Edit Website
       </a>
-      <a href="#/widget-list">
-        <span class="pull-right right vcenter glyphicon glyphicon-ok"></span>
-      </a>
+      <button ng-click="wEditModel.update(wEditModel.web)" class="pull-right right vcenter btn-link">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
     </div>
 
   </div>
@@ -30,27 +30,9 @@
 
 <aside class="container col-sm-4 hidden-xs">
   <ul class="list-group">
-    <li class="list-group-item">
-      <a href="#/page-list">Address Book App</a>
-      <a href="#/widget-edit">
-        <span class="pull-right glyphicon glyphicon-cog"></span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="#/page-list">Blogger</a>
-      <a href="#/widget-edit">
-        <span class="pull-right glyphicon glyphicon-cog"></span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="#/page-list">Blogging App</a>
-      <a href="#/widget-edit">
-        <span class="pull-right glyphicon glyphicon-cog"></span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="#/page-list">Script Testing App</a>
-      <a href="#/widget-edit">
+    <li class="list-group-item" ng-repeat="website in wEditModel.websites">
+      <a href="#/page-list">{{website.name}}</a>
+      <a href="#/user/{{website.developerId}}/website/{{website._id}}">
         <span class="pull-right glyphicon glyphicon-cog"></span>
       </a>
     </li>
@@ -58,14 +40,18 @@
 </aside>
 
 <main class="container col-sm-8">
+  <div ng-show="wEditModel.error" class="alert alert-danger" role="alert">
+      {{wEditModel.error}}
+  </div>
+
   <label for="name">Website Name</label>
   <input ng-model="wEditModel.web.name" name="name" id="name" class="form-control" />
 
   <label for="description">Website Description</label>
-  <textarea ng-model="wEditModel.web.copy" rows="3" name="description" id="description" class="form-control"></textarea>
+  <textarea ng-model="wEditModel.web.description" rows="3" name="description" id="description" class="form-control"></textarea>
 
-  <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
-  <a href="#/widget-list" class="btn btn-danger btn-block top-margin">Delete</a>
+  <button ng-click="wEditModel.remove(wEditModel.web)" type="submit" class="btn btn-danger btn-block">Delete</button>
+  <!-- <a href="#/widget-list" class="btn btn-danger btn-block top-margin">Delete</a> -->
 </main>
 
 <footer class="navbar navbar-default navbar-fixed-bottom">

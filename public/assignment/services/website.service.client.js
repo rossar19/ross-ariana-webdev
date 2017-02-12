@@ -1,9 +1,9 @@
 (function() {
 	angular
 		.module("WebAppMaker")
-		.factory("WebsiteService", websiteService);
+		.factory("WebsiteService", WebsiteService);
 
-	function websiteService() {
+	function WebsiteService() {
 		var websites = [
 			{ "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
 			{ "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -18,8 +18,7 @@
             "findWebsitesByUser": findWebsitesByUser,
             "findWebsiteById": findWebsiteById,
             "updateWebsite": updateWebsite,
-            "deleteWebsite": deleteWebsite,
-            "findAllWebsitesForUser": findAllWebsitesForUser
+            "deleteWebsite": deleteWebsite
         };
         return api;
 
@@ -40,7 +39,7 @@
 			var sites = [];
 			for (var w in websites) {
 				if (userId == websites[w].developerId) {
-					sites.push(websites[w].developerId);
+					sites.push(websites[w]);
 				}
 			}
 			return sites;
@@ -58,26 +57,37 @@
 
 		// updates the website in local websites array whose _id matches the websiteId parameter
 		function updateWebsite(websiteId, newWebsite) {
-			var website = findWebsiteById(websiteId);
-			if (website != null) {
-				website.name = newWebsite.name;
-				website.description = newWebsite.description;
-			}
+            for(var w in websites) {
+                var website = websites[w];
+                if( website._id === websiteId ) {
+                    websites[w].name = newWebsite.name;
+                    websites[w].description = newWebsite.description;
+                    return website;
+                }
+            }
+            return null;
 		}
 
 		// removes the website from local websites array whose _id matches the websiteId parameter
 		function deleteWebsite(websiteId) {
-			websites.splice(websites.indexOf(findWebsiteById(websiteId)), 1);
+            for(var w in websites) {
+                var website = websites[w];
+                if( website._id === websiteId ) {
+					websites.splice(w, 1);
+                    return;
+                }
+            }
+            return null;
 		}
 
         // creates an ID for new users
         function generateWebId() {
-        	var temp = Math.random() * 1000;
+        	var temp = Math.floor(Math.random() * 1000);
         	if (findWebsiteById(temp) != null) {
         		generateWebId();
         	}
 
-        	return temp;
+        	return temp.toString();
         }
 
         // adds the website parameter instance to the local websites array.
@@ -87,7 +97,7 @@
 				"_id": generateWebId(),
 				"name": website.name,
 				"developerId": userId,
-				"description": "Lorem" 
+				"description": website.description 
 			}
 
 			websites.push(w);

@@ -4,14 +4,22 @@
       <a class="navbar-brand">
         Profile
       </a>
-      <a href="#/profile">
-        <span class="pull-right right vcenter glyphicon glyphicon-ok"></span>
-      </a>
+      <button type="submit" class="pull-right right vcenter btn-link" ng-click="proModel.update(proModel.user)">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
     </div>
   </div>
 </nav>
 
 <main class="container">
+    <div ng-show="proModel.error" class="alert alert-danger" role="alert">
+        {{proModel.error}}
+    </div>
+
+    <div ng-show="proModel.success" class="alert alert-success" role="alert">
+        {{proModel.success}}
+    </div>
+
     <form>
         <label for="username">Username</label>
         <input ng-model="proModel.user.username" name="username" id="username" type="text" placeholder="johndoe123" class="form-control" />
@@ -28,7 +36,7 @@
         <!-- <button type="submit" class="btn btn-primary btn-block">Websites</button>
         <button type="submit" class="btn btn-danger btn-block">Logout</button> -->
 
-        <a href="#/website-list" class="btn btn-primary btn-block top-margin">Websites</a>
+        <a href="#/user/{{proModel.user._id}}/website" class="btn btn-primary btn-block top-margin">Websites</a>
         <a href="#/login" class="btn btn-danger btn-block">Logout</a>
     </form>
 </main>
@@ -36,7 +44,7 @@
 <footer class="navbar navbar-default navbar-fixed-bottom">
   <div class="container pos-rel">
     <div class="navbar-header">
-      <a href="#/profile" class="navbar-brand">
+      <a href="#/user/{{proModel.user._id}}" class="navbar-brand">
         <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
       </a>
     </div>

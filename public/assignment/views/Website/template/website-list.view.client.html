@@ -1,13 +1,13 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container pos-rel">
     <div class="navbar-header">
-      <a href="#/profile">
+      <a href="#/user/{{wListModel.userId}}">
         <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="navbar-brand glyph-left">
         Websites
       </a>
-      <a href="#/widget-new">
+      <a href="#/user/{{wListModel.userId}}/website/new">
         <span class="pull-right right vcenter glyphicon glyphicon-plus"></span>
       </a>
     </div>
@@ -16,27 +16,9 @@
 
 <main class="container">
   <ul class="list-group">
-    <li class="list-group-item">
-      <a href="#/page-list">Address Book App</a>
-      <a href="#/widget-edit">
-        <span class="pull-right glyphicon glyphicon-cog"></span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="#/page-list">Blogger</a>
-      <a href="#/widget-edit">
-        <span class="pull-right glyphicon glyphicon-cog"></span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="#/page-list">Blogging App</a>
-      <a href="#/widget-edit">
-        <span class="pull-right glyphicon glyphicon-cog"></span>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <a href="#/page-list">Script Testing App</a>
-      <a href="#/widget-edit">
+    <li class="list-group-item" ng-repeat="website in wListModel.websites">
+      <a href="#/page-list">{{website.name}}</a>
+      <a href="#/user/{{wListModel.userId}}/website/{{website._id}}">
         <span class="pull-right glyphicon glyphicon-cog"></span>
       </a>
     </li>
@@ -46,7 +28,7 @@
 <footer class="navbar navbar-default navbar-fixed-bottom">
   <div class="container pos-rel">
     <div class="navbar-header">
-      <a href="#/profile" class="navbar-brand">
+      <a href="#/user/{{wListModel.userId}}" class="navbar-brand">
         <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
       </a>
     </div>

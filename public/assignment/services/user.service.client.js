@@ -39,13 +39,16 @@
 
         // updates the user in local users array whose _id matches the userId parameter
         function updateUser(userId, newUser) {
-        	var user = findUserById(userId);
-        	if (user != null) {
-        		user.firstName = newUser.firstName;
-        		user.lastName = newUser.lastName;
-        	}
-
-            return user;
+            for(var u in users) {
+                var user = users[u];
+                if( user._id === userId ) {
+                    users[u].firstName = newUser.firstName;
+                    users[u].lastName = newUser.lastName;
+                    users[u].email = newUser.email;
+                    return user;
+                }
+            }
+            return null;
         }
 
         // returns the user whose username and password match the username and password parameters
@@ -76,7 +79,7 @@
         		generateUserId();
         	}
 
-        	return temp;
+        	return temp.toString();
         }
 
         // adds the user parameter instance to the local users array
