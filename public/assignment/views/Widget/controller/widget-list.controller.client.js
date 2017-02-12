@@ -1,7 +1,7 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("WidgetListController", widgetListController);
+        .controller("widgetListController", widgetListController);
     
     function widgetListController() {
     }

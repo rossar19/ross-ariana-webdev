@@ -1,6 +1,6 @@
 (function() {
 	angular
-		.model("WebAppMaker")
+		.module("WebAppMaker")
 		.factory("WidgetService", widgetService);
 
 	function widgetService() {
@@ -82,4 +82,4 @@
 			widgets.push(w);
 		}
 	}
-})
+})();

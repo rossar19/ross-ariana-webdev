@@ -1,8 +1,14 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("ProfileController", profileController);
+        .controller("profileController", profileController);
     
-    function profileController() {
+    function profileController($routeParams, UserService) {
+    	var vm = this;
+    	var userId = $routeParams["userId"];
+		function init() {
+			vm.user = UserService.findUserById(vm.userId);
+		}
+		init();
     }
 })();

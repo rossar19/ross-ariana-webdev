@@ -59,10 +59,10 @@
 
 <main class="container col-sm-8">
   <label for="name">Name</label>
-  <input name="name" id="name" class="form-control" />
+  <input ng-model="wNewModel.web.name" name="name" id="name" class="form-control" />
 
   <label for="description">Description</label>
-  <textarea rows="3" name="description" id="description" class="form-control"></textarea>
+  <textarea ng-model="wNewModel.web.copy" rows="3" name="description" id="description" class="form-control"></textarea>
 </main>
 
 <footer class="navbar navbar-default navbar-fixed-bottom">

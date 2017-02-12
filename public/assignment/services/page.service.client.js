@@ -1,6 +1,6 @@
 (function() {
 	angular
-		.model("WebAppMaker")
+		.module("WebAppMaker")
 		.factory("PageService", pageService);
 
 	function pageService() {
@@ -74,4 +74,4 @@
 			pages.push(p);
 		}
 	}
-})
+})();

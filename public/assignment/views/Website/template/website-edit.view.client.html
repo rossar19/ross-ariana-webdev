@@ -59,10 +59,10 @@
 
 <main class="container col-sm-8">
   <label for="name">Website Name</label>
-  <input name="name" id="name" class="form-control" />
+  <input ng-model="wEditModel.web.name" name="name" id="name" class="form-control" />
 
   <label for="description">Website Description</label>
-  <textarea rows="3" name="description" id="description" class="form-control"></textarea>
+  <textarea ng-model="wEditModel.web.copy" rows="3" name="description" id="description" class="form-control"></textarea>
 
   <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
   <a href="#/widget-list" class="btn btn-danger btn-block top-margin">Delete</a>

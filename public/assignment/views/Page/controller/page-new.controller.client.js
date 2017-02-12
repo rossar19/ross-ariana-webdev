@@ -1,7 +1,7 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("NewPageController", newPageController);
+        .controller("newPageController", newPageController);
     
     function newPageController() {
     }

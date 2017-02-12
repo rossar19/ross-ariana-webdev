@@ -1,9 +1,9 @@
 (function() {
 	angular
-		.model("WebAppMaker")
-		.factory("UserService", userService);
+		.module("WebAppMaker")
+		.factory("UserService", UserService);
 
-	function userService() {
+	function UserService() {
 		var users = [
 			{_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
 			{_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -71,7 +71,7 @@
 
         // creates an ID for new users
         function generateUserId() {
-        	var temp = Math.random() * 1000;
+        	var temp = Math.floor(Math.random() * 1000);
         	if (findUserById(temp) != null) {
         		generateUserId();
         	}
@@ -82,13 +82,13 @@
         // adds the user parameter instance to the local users array
         function createUser(user) {
         	var u = {
-        		"_id": generateUserId,
+        		"_id": generateUserId(),
         		"username": user.username,
-        		"password": user.password,
-        		"firstName": user.firstName,
-        		"lastName": user.lastName
+        		"password": user.password
+        		// "firstName": user.firstName,
+        		// "lastName": user.lastName
         	}
         	users.push(u);
         }
 	}
-})
+})();

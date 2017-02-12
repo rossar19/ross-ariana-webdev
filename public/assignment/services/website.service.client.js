@@ -1,6 +1,6 @@
 (function() {
 	angular
-		.model("WebAppMaker")
+		.module("WebAppMaker")
 		.factory("WebsiteService", websiteService);
 
 	function websiteService() {
@@ -94,4 +94,4 @@
 
 		}
 	}
-})
+})();

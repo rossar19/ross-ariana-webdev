@@ -14,16 +14,16 @@
 <main class="container">
     <form>
         <label for="username">Username</label>
-        <input name="username" id="username" type="text" placeholder="johndoe123" class="form-control" />
+        <input ng-model="proModel.user.username" name="username" id="username" type="text" placeholder="johndoe123" class="form-control" />
 
         <label for="email">Email</label>
-        <input name="email" id="email" type="email" placeholder="johndoe123@gmail.com" class="form-control" />
+        <input ng-model="proModel.user.email" name="email" id="email" type="email" placeholder="johndoe123@gmail.com" class="form-control" />
 
         <label for="firstName">First Name</label>
-        <input name="firstName" id="firstName" type="text" placeholder="John" class="form-control" />
+        <input ng-model="proModel.user.firstName" name="firstName" id="firstName" type="text" placeholder="John" class="form-control" />
 
         <label for="lastName">Last Name</label>
-        <input name="lastName" id="lastName" type="text" placeholder="Doe" class="form-control" />
+        <input ng-model="proModel.user.lastName" name="lastName" id="lastName" type="text" placeholder="Doe" class="form-control" />
 
         <!-- <button type="submit" class="btn btn-primary btn-block">Websites</button>
         <button type="submit" class="btn btn-danger btn-block">Logout</button> -->

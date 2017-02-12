@@ -1,10 +1,31 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("LoginController", loginController);
+        .controller("loginController", loginController);
     
     function loginController(UserService, $location) {
-        var vm = this;
-        vm.login = login;
+    	var vm = this;
+    	vm.login = login;
+
+    	function isValidLogin(user) {
+    		return !angular.isUndefined(user) 
+    			&& !angular.isUndefined(user.username) 
+    			&& !angular.isUndefined(user.password)
+    			&& user.username != ''
+    			&& user.password != '';
+    	}
+
+	    function login(user) {
+	    	if (isValidLogin(user)) {
+		        user = UserService.findUserByCredentials(user.username, user.password);
+		        if(user) {
+		            $location.url("/user/" + user._id);
+		        } else {
+		        	vm.error = 'User not found';
+		        }
+			} else {
+	        	vm.error = 'Please fill out all fields';
+	        }
+	    }
     }
 })();

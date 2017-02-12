@@ -1,7 +1,7 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("EditWidgetController", editWidgetController);
+        .controller("editWidgetController", editWidgetController);
     
     function editWidgetController() {
     }

@@ -17,10 +17,10 @@
 <main class="container">
     <form>
         <label for="pageName">Name</label>
-        <input name="pageName" id="pageName" type="text" placeholder="Page Name" class="form-control" />
+        <input ng-model="pEditModel.page.name" name="pageName" id="pageName" type="text" placeholder="Page Name" class="form-control" />
 
         <label for="pageTitle">Title</label>
-        <input name="pageTitle" id="pageTitle" type="text" placeholder="Page Title" class="form-control" />
+        <input ng-model="pEditModel.page.title" name="pageTitle" id="pageTitle" type="text" placeholder="Page Title" class="form-control" />
         
         <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
         <a href="#/page-list" class="btn btn-danger btn-block">Delete</a>
