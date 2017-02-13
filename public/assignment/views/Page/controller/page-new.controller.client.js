@@ -7,7 +7,14 @@
     	var vm = this;
     	vm.userId = $routeParams["uid"];
     	vm.webId = $routeParams["wid"];
+        vm.pageId = $routeParams["pid"];
     	vm.create = create;
+
+        function init() {
+            vm.page = PageService.findPageById(vm.pageId);
+            vm.pages = PageService.findPagesByWebsiteId(vm.webId);
+        }
+        init();
 
 		function isValidPage(newPage) {
 			return !angular.isUndefined(newPage) 

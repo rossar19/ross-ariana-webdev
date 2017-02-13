@@ -11,7 +11,8 @@
     	vm.remove = remove;
 
     	function init() {
-    		vm.page = PageService.findPageById(vm.pageId);
+            vm.page = PageService.findPageById(vm.pageId);
+            vm.pages = PageService.findPagesByWebsiteId(vm.page.websiteId);
     	}
     	init();
 
