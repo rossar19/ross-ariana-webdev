@@ -1,9 +1,9 @@
 (function() {
 	angular
 		.module("WebAppMaker")
-		.factory("PageService", pageService);
+		.factory("PageService", PageService);
 
-	function pageService() {
+	function PageService() {
 		var pages = [
 			{ "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
 			{ "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
@@ -12,7 +12,7 @@
 
 		var api = {
             "createPage": createPage,
-            "findPageByWebsiteId": findPageByWebsiteId,
+            "findPagesByWebsiteId": findPagesByWebsiteId,
             "findPageById": findPageById,
             "updatePage": updatePage,
             "deletePage": deletePage
@@ -20,13 +20,14 @@
 		return api;
 
 		// retrieves the pages in local pages array whose websiteId matches the parameter websiteId
-		function findPageByWebsiteId(websiteId) {
+		function findPagesByWebsiteId(websiteId) {
+			var ps = [];
 			for (var p in pages) {
 				if (websiteId == pages[p].websiteId) {
-					return angular.copy(pages[p]);
+					ps.push(pages[p]);
 				}
 			}
-			return null;
+			return ps;
 		}
 		
 		// retrieves the page in local pages array whose _id matches the pageId parameter
@@ -41,26 +42,37 @@
 		
 		// updates the page in local pages array whose _id matches the pageId parameter
 		function updatePage(pageId, newPage) {
-			var page = findPageById(pageId);
-			page.name = newPage.name;
-			page.description = newPage.description;
+            for(var p in pages) {
+                var page = pages[p];
+                if( page._id === pageId ) {
+                    pages[p].name = newPage.name;
+                    pages[p].description = newPage.description;
+                    return page;
+                }
+            }
+            return null;
 		}
 
 		// removes the page from local pages array whose _id matches the pageId parameter
 		function deletePage(pageId) {
-			if (findPageById(pageId) != null) {
-				pages.splice(pages.indexOf(findPageById(pageId)), 1);
-			}
+            for(var p in pages) {
+                var page = pages[p];
+                if( page._id === pageId ) {
+					pages.splice(p, 1);
+                    return;
+                }
+            }
+            return null;
 		}
 
         // creates an ID for new users
         function generatePageId() {
-        	var temp = Math.random() * 1000;
+        	var temp = Math.floor(Math.random() * 1000);
         	if (findPageById(temp) != null) {
         		generatePageId();
         	}
 
-        	return temp;
+        	return temp.toString();
         }
 
 		// adds the page parameter instance to the local pages array. The new page's websiteId is set to the websiteId parameter

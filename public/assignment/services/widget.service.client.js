@@ -1,9 +1,9 @@
 (function() {
 	angular
 		.module("WebAppMaker")
-		.factory("WidgetService", widgetService);
+		.factory("WidgetService", WidgetService);
 
-	function widgetService() {
+	function WidgetService() {
 		var widgets = [
 			{ "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
 			{ "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
