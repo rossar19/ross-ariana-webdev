@@ -92,6 +92,8 @@
 			}
 
 			widgets.push(w);
+
+			return w;
 		}
 	}
 })();
