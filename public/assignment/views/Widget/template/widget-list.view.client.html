@@ -1,13 +1,13 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container pos-rel">
         <div class="navbar-header">
-          <a href="#/page-list">
+          <a href="#/user/{{wgListModel.userId}}/website/{{wgListModel.websiteId}}/page/">
             <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
           </a>
           <a class="navbar-brand glyph-left">
             Widgets
           </a>
-          <a href="#/widget-choose">
+          <a href="#/user/{{wgListModel.userId}}/website/{{wgListModel.websiteId}}/page/{{wgListModel.pageId}}/widget/new">
             <span class="pull-right right vcenter glyphicon glyphicon-plus"></span>
           </a>
         </div>
@@ -15,70 +15,30 @@
     </nav>
 
     <main class="container">
-      <section class="widget">
+      <section class="widget" ng-repeat="widget in wgListModel.widgets">
         <div class="widget-edit">
-          <a href="#/widget-heading">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
+            <a href="#/user/{{wgListModel.userId}}/website/{{wgListModel.websiteId}}/page/{{wgListModel.pageId}}/widget/{{widget._id}}">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </div>
-        <h1>Alpacas</h1>
-      </section>
 
-      <section class="widget">
-        <div class="widget-edit">
-          <a href="#/widget-heading">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </div>
-        <h4>I really like alpacas.</h4>
-      </section>
+        <!--<ng-include src="model.getWidgetTemplateUrl(widget.widgetType)"></ng-include>-->
 
-      <section class="widget">
-        <div class="widget-edit">
-          <a href="#/widget-image">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        <div ng-switch="widget.widgetType">
+            <div ng-switch-when="HEADER">
+                <ng-include src="'views/Widget/template/widget-header.view.client.html'"></ng-include>
+            </div>
+            <div ng-switch-when="IMAGE">
+                <ng-include src="'views/Widget/template/widget-image.view.client.html'"></ng-include>
+            </div>
+            <div ng-switch-when="HTML">
+                <ng-include src="'views/Widget/template/widget-html.view.client.html'"></ng-include>
+            </div>
+            <div ng-switch-when="YOUTUBE">
+                <ng-include src="'views/Widget/template/widget-youtube.view.client.html'"></ng-include>
+            </div>
         </div>
-        <img src="../imgs/llama.jpg" width="100%">
-      </section>
-
-      <section class="widget">
-        <div class="widget-edit">
-          <span class="glyphicon glyphicon-cog"></span>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </div>
-        <p>Ok.  So that picture is actually of <a href="#">a llama</a>, but that's only because I happened to already have a picture of a llama on my computer, but not an alpaca.  But whatever.  Life is hard.  And everyone knows that sloths are really where it's at.</p>
-      </section>
-
-      <section class="widget top-margin">
-        <div class="widget-edit">
-          <a href="#/widget-heading">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </div>
-        <h4>Sloths seriously are better.</h4>
-      </section>
-
-      <section class="widget">
-        <div class="widget-edit">
-          <a href="#/widget-youtube">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </div>
-        <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ba7rRfKIHxU" frameborder="0" allowfullscreen></iframe>
-      </section>
-
-      <section class="widget">
-        <div class="widget-edit">
-          <span class="glyphicon glyphicon-cog"></span>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </div>
-        <p>Did you see that?  But like.  Did you SEE that?</p>
       </section>
     </main>
 

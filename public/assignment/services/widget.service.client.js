@@ -27,12 +27,13 @@
 
 		// retrieves the widgets in local widgets array whose pageId matches the parameter pageId
 		function findWidgetsByPageId(pageId) {
+			var wigs = [];
 			for (var w in widgets) {
 				if (pageId == widgets[w].pageId) {
-					return angular.copy(widgets[w]);
+					wigs.push(widgets[w]);
 				}
 			}
-			return null;
+			return wigs;
 		}
 
 		// retrieves the widget in local widgets array whose _id matches the widgetId parameter
@@ -47,32 +48,43 @@
 		
 		// updates the widget in local widgets array whose _id matches the widgetId parameter
 		function updateWidget(widgetId, newWidget) {
-			var widget = findWidgetById(widgetId);
-			widget.widgetType = newWidget.widgetType;
-			widget.size = widget.size;
-			widget.text = widget.text;
+            for(var w in widgets) {
+                var widget = widgets[w];
+                if( widget._id === widgetId ) {
+                	widgets[w].widgetType = newWidget.widgetType;
+                    widgets[w].size = newWidget.size;
+                    widgets[w].text = newWidget.text;
+                    return widget;
+                }
+            }
+            return null;
 		}
 
 		// removes the widget from local widgets array whose _id matches the widgetId parameter
 		function deleteWidget(widgetId) {
-			if (findWidgetById(widgetId) != null) {
-				widgets.splice(widgets.indexOf(findWidgetById(widgetId)), 1);
-			}
+            for(var w in widgets) {
+                var widget = widgets[w];
+                if( widget._id === widgetId ) {
+					widgets.splice(w, 1);
+                    return;
+                }
+            }
+            return null;
 		}
 
         // creates an ID for new users
         function generateWigId() {
-        	var temp = Math.random() * 1000;
+        	var temp = Math.floor(Math.random() * 1000);
         	if (findWidgetById(temp) != null) {
         		generateWigId();
         	}
-        	return temp;
+        	return temp.toString();
         }
 
 		// adds the widget parameter instance to the local widgets array. The new widget's pageId is set to the pageId parameter
 		function createWidget(pageId, widget) {
 			var w = {
-				"_id": generateWigId,
+				"_id": generateWigId(),
 				"widgetType": widget.widgetType,
 				"pageId": pageId,
 				"size": widget.size,

@@ -1,0 +1,48 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container pos-rel">
+    <div class="navbar-header">
+      <a href="#/user/{{wgListModel.userId}}/website/{{wgListModel.websiteId}}/page/{{wgListModel.pageId}}/widget">
+        <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="navbar-brand glyph-left">
+        Widget Edit
+      </a>
+      <a ng-click="wgEditModel.update(wgEditModel.widget)">
+        <span class="pull-right right vcenter glyphicon glyphicon-ok"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div ng-show="wgEditModel.error" class="alert alert-danger" role="alert">
+      {{wgEditModel.error}}
+  </div>
+
+    <form>
+        <label for="widgetName">Name</label>
+        <input ng-model="wgEditModel.widget.name" name="widgetName" id="widgetName" type="text" class="form-control" />
+
+        <label for="widgetText">Text</label>
+        <input ng-model="wgEditModel.widget.text" name="widgetText" id="widgetText" type="text" class="form-control" />
+
+        <label for="widgetURL">URL</label>
+        <input ng-model="wgEditModel.widget.url" name="widgetURL" id="widgetURL" type="url" class="form-control" />
+
+        <label for="widgetWidth">Width</label>
+        <input ng-model="wgEditModel.widget.width" name="widgetWidth" id="widgetWidth" class="form-control" />
+        
+        <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
+        <a ng-click="wgEditModel.remove(wgEditModel.widget)" class="btn btn-danger btn-block">Delete</a>
+    </form>
+</main>
+
+<footer class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container pos-rel">
+    <div class="navbar-header">
+      <a href="#/profile" class="navbar-brand">
+        <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</footer>
