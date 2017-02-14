@@ -19,7 +19,7 @@
         init();
 
         function getEditorTemplateUrl(type) {
-            return 'views/widget/template/editors/widget-'+ type +'-editor.view.client.html';
+            return 'views/Widget/template/editors/widget-'+ type +'-editor.view.client.html';
         }
 
         function update(newWidget) {
