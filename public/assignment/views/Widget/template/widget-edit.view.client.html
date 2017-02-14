@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#/user/{{wgListModel.userId}}/website/{{wgListModel.websiteId}}/page/{{wgListModel.pageId}}/widget/new">
+            <a href="#/user/{{wgEditModel.userId}}/website/{{wgEditModel.websiteId}}/page/{{wgEditModel.pageId}}/widget/new">
                 <span class="glyphicon glyphicon-plus"></span>
             </a>
         </div>
@@ -20,10 +20,12 @@
      ng-include="wgEditModel.getEditorTemplateUrl(wgEditModel.widget.widgetType)">
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Footer</a>
-        </div>
+<footer class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container pos-rel">
+    <div class="navbar-header">
+      <a href="#/user/{{wgEditModel.userId}}" class="navbar-brand">
+        <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
+      </a>
     </div>
-</nav>
+  </div>
+</footer>

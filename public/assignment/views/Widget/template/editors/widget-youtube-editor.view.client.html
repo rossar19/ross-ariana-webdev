@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container pos-rel">
     <div class="navbar-header">
-      <a href="#/user/{{wgListModel.userId}}/website/{{wgListModel.websiteId}}/page/{{wgListModel.pageId}}/widget">
+      <a href="#/user/{{wgEditModel.userId}}/website/{{wgEditModel.websiteId}}/page/{{wgEditModel.pageId}}/widget/">
         <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="navbar-brand glyph-left">
@@ -40,7 +40,7 @@
 <footer class="navbar navbar-default navbar-fixed-bottom">
   <div class="container pos-rel">
     <div class="navbar-header">
-      <a href="#/profile" class="navbar-brand">
+      <a href="#/user/{{wgEditModel.userId}}" class="navbar-brand">
         <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
       </a>
     </div>

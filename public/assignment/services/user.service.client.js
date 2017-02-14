@@ -34,7 +34,14 @@
 
         // removes the user whose _id matches the userId parameter
         function deleteUser(userId) {
-        	users.splice(users.indexOf(findUserById(userId)), 1);
+            for(var u in users) {
+                var user = users[u];
+                if( user._id === userId ) {
+                    users.splice(u, 1);
+                    return;
+                }
+            }
+            return null;
         }
 
         // updates the user in local users array whose _id matches the userId parameter
