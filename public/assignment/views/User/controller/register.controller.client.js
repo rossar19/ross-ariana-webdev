@@ -15,17 +15,26 @@
     			&& user.username != ''
     			&& user.password != ''
     			&& user.verpass != ''
-    			&& user.verpass == user.password
-    			&& UserService.findUserByUsername(user.username) == null;
+    			&& user.verpass == user.password;
     	}
 
     	function register(user) {
     		if (isValidRegistration(user)) {
-    			UserService.createUser(user);
-    			user = UserService.findUserByUsername(user.username);
-    			$location.url("/user/" + user._id);
+    			UserService
+                    .findUserByUsername(user.username)
+                    .success(function(user) {
+                        vm.error = "That Username is taken";
+                    })
+                    .error(function(err) {
+                        vm.error = "Available";
+                        UserService
+                            .createUser(user)
+                            .success(function(user) {
+                                $location.url("/user/" + user._id);
+                            });
+                    });
     		} else {
-    			vm.error = 'Hmm...looks like there are some issues with your registration.';
+    			vm.error = 'Please fill out all fields';
     		}
     	}
     }

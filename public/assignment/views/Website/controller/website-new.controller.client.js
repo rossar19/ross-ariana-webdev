@@ -9,8 +9,17 @@
 		vm.create = create;
 
 		function init() {
-			vm.website = WebsiteService.findWebsiteById(vm.userId);
-			vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+			WebsiteService
+                .findWebsiteById(vm.userId)
+                .success(function(website) {
+                    vm.web = website;
+                });
+
+			WebsiteService
+                .findWebsitesByUser(vm.userId)
+                .success(function(websites) {
+                    vm.websites = websites;
+                });
 		}
 		init();
 
@@ -24,8 +33,11 @@
 
 		function create(newWeb) {
 			if (isValidWebsite(newWeb)) {
-				WebsiteService.createWebsite(vm.userId, newWeb);
-				$location.url("/user/" + vm.userId + "/website");
+				WebsiteService
+					.createWebsite(vm.userId, newWeb)
+					.success(function(website) {
+						$location.url("/user/" + vm.userId + "/website");
+					});
 			} else {
 				vm.error = 'Please fill out all fields';
 			}

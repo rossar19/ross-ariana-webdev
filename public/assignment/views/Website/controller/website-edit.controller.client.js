@@ -10,23 +10,39 @@
         vm.remove = remove;
 
 		function init() {
-			vm.web = WebsiteService.findWebsiteById(vm.webId);
-			vm.websites = WebsiteService.findWebsitesByUser(vm.web.developerId);
+			WebsiteService
+                .findWebsiteById(vm.webId)
+                .success(function(website) {
+                    vm.web = website;
+                });
+
+			WebsiteService
+                .findWebsitesByUser(vm.webId)
+                .success(function(websites) {
+                    vm.websites = websites;
+                });
 		}
 		init();
 
         function update(newWeb) {
-            var web = WebsiteService.updateWebsite(vm.webId, newWeb);
-            if(web == null) {
-                vm.error = "Unable to update website";
-            } else {
-            	$location.url("/user/" + vm.web.developerId + "/website");
-            }
+            WebsiteService
+                .updateWebsite(vm.webId, newWeb)
+                .success(function(website) {
+                    var web = website;
+                    if(web == null) {
+                        vm.error = "Unable to update website";
+                    } else {
+                        $location.url("/user/" + vm.web.developerId + "/website");
+                    }
+                });
         };
 
         function remove(website) {
-        	WebsiteService.deleteWebsite(vm.webId);
-        	$location.url("/user/" + vm.web.developerId + "/website");
+        	WebsiteService
+                .deleteWebsite(vm.webId)
+                .success(function() {
+                    $location.url("/user/" + vm.web.developerId + "/website");
+                });
         }
 
         var web = WebsiteService.findWebsiteById(vm.webId);

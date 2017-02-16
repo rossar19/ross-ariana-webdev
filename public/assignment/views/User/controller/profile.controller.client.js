@@ -10,22 +10,31 @@
         vm.remove = remove;
 
 		function init() {
-			vm.user = UserService.findUserById(vm.userId);
+			var promise = UserService.findUserById(vm.userId);
+            promise.success(function(user) {
+                vm.user = user;
+            });
 		}
 		init();
 
         function update(newUser) {
-            var user = UserService.updateUser(vm.userId, newUser);
-            if(user == null) {
-                vm.error = "unable to update user";
-            } else {
-                vm.success = "user successfully updated"
-            }
+            UserService
+            .updateUser(vm.userId, newUser)
+            .success(function(user) {
+                if(user == null) {
+                    vm.error = "unable to update user";
+                } else {
+                    vm.success = "user successfully updated"
+                }
+            });
         };
 
         function remove(user) {
-            UserService.deleteUser(vm.userId);
-            $location.url("/login");
+            UserService
+                .deleteUser(vm.userId)
+                .success(function(user) {
+                    $location.url("/login");
+                });
         }
 
         var user = UserService.findUserById(vm.userId);
