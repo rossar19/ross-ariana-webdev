@@ -44,13 +44,6 @@ module.exports = function(app) {
 			return w._id == websiteId;
 		});
 		res.json(website);
-
-		// for (var w in websites) {
-		// 	if (websiteId == websites[w]._id) {
-		// 		return angular.copy(websites[w]);
-		// 	}
-		// }
-		// return null;
 	}
 	
 	function updateWebsite(req, res) {

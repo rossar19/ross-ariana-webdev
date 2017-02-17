@@ -6,11 +6,12 @@
     function newWebsiteController($routeParams, WebsiteService, $location) {
 		var vm = this;
 		vm.userId = $routeParams["uid"];
+    	vm.webId = $routeParams["wid"];
 		vm.create = create;
 
 		function init() {
 			WebsiteService
-                .findWebsiteById(vm.userId)
+                .findWebsiteById(vm.webId)
                 .success(function(website) {
                     vm.web = website;
                 });

@@ -6,6 +6,7 @@
     function editWebsiteController($routeParams, WebsiteService, $location) {
     	var vm = this;
     	vm.webId = $routeParams["wid"];
+        vm.userId = $routeParams["uid"];
         vm.update = update;
         vm.remove = remove;
 
@@ -17,7 +18,7 @@
                 });
 
 			WebsiteService
-                .findWebsitesByUser(vm.webId)
+                .findWebsitesByUser(vm.userId)
                 .success(function(websites) {
                     vm.websites = websites;
                 });

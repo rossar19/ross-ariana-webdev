@@ -11,8 +11,16 @@
     	vm.create = create;
 
         function init() {
-            vm.page = PageService.findPageById(vm.pageId);
-            vm.pages = PageService.findPagesByWebsiteId(vm.webId);
+            PageService
+                .findPageById(vm.pageId)
+                .success(function(page) {
+                    vm.page = page;
+                });
+            PageService
+                .findPagesByWebsiteId(vm.webId)
+                .success(function(page) {
+                    vm.pages = page;
+                });
         }
         init();
 
@@ -26,8 +34,11 @@
 
     	function create(newPage) {
 			if (isValidPage(newPage)) {
-    			PageService.createPage(vm.webId, newPage);
-				$location.url("/user/" + vm.userId + "/website/" + vm.webId + "/page");
+    			PageService
+                    .createPage(vm.webId, newPage)
+                    .success(function(page) {
+                        $location.url("/user/" + vm.userId + "/website/" + vm.webId + "/page");
+                    });
 			} else {
 				vm.error = 'Please fill out all fields';
 			}
