@@ -1,7 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container pos-rel">
     <div class="navbar-header">
-      <a href="#/user/{{wgEditModel.userId}}/website/{{wgEditModel.websiteId}}/page/{{wgEditModel.pageId}}/widget/">
+      <!-- <a href="#/user/{{wgEditModel.userId}}/website/{{wgEditModel.websiteId}}/page/{{wgEditModel.pageId}}/widget/new">
+        <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
+      </a> -->
+      <a ng-click="wgEditModel.remove(wgEditModel.widget)">
         <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="navbar-brand glyph-left">
@@ -15,24 +18,35 @@
 </nav>
 
 <main class="container">
-    <form>
+    <!-- <form id="uploadForm" enctype="multipart/form-data"> -->
+    <form id="uploadForm" action="/api/upload"  method="post" enctype="multipart/form-data">
         <label for="widgetName">Name</label>
         <input ng-model="wgEditModel.widget.name" name="widgetName" id="widgetName" type="text" class="form-control" />
 
         <label for="widgetText">Text</label>
         <input ng-model="wgEditModel.widget.text" name="widgetText" id="widgetText" type="text" class="form-control" />
 
-        <label for="widgetURL">URL</label>
-        <input ng-model="wgEditModel.widget.url" name="widgetURL" id="widgetURL" type="url" class="form-control" />
+        <!-- <label for="url">URL</label>
+        <input type="radio" name="fileUpload" id="url" value="url" checked>
+
+        <label for="upload">Upload</label>
+        <input type="radio" name="fileUpload" id="upload" value="upload"> -->
+
+        <!-- <label for="widgetURL">URL</label>
+        <input ng-model="wgEditModel.widget.url" name="widgetURL" id="widgetURL" type="url" class="form-control" /> -->
+
+        <!-- <input  name="myFile"   type="file" class="form-control"/> -->
+        <input  name="width"    value="{{wgEditModel.widget.width}}" style="display: none"/>
+        <input  name="widgetId" value="{{wgEditModel.widget._id}}"   style="display: none"/>
+
+        <label for="widgetUpload">Upload</label>
+        <input name="widgetUpload" id="widgetUpload" type="file" class="form-control" />
 
         <label for="widgetWidth">Width</label>
         <input ng-model="wgEditModel.widget.width" name="widgetWidth" id="widgetWidth" class="form-control" />
-
-        <label for="widgetUpload">Upload</label>
-        <input ng-model="wgEditModel.widget.url" name="widgetUpload" id="widgetUpload" type="file" class="form-control" />
         
         <!-- <button type="submit" class="btn btn-primary btn-block">Upload Image</button> -->
-        <a href="#/widget-list" class="btn btn-primary btn-block">Upload Image</a>
+        <button type="submit" ng-click="wgEditModel.upload()" class="btn btn-primary btn-block">Upload Image</button>
         
         <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
         <a ng-click="wgEditModel.remove(wgEditModel.widget)" class="btn btn-danger btn-block">Delete</a>

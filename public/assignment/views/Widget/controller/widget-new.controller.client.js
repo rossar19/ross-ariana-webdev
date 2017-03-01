@@ -13,14 +13,22 @@
         vm.create = create;
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            WidgetService
+                .findWidgetById(vm.widgetId)
+                .success(function(widget) {
+                    vm.widget = widget;
+                });
         }
         init();
 
         function create(type) {
             var w = { "widgetType": type };
-            var newWidget = WidgetService.createWidget(vm.pageId, w);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+            WidgetService
+                .createWidget(vm.pageId, w)
+                .success(function(widget) {
+                    var newWidget = widget;
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                });
         }
     }
 })();

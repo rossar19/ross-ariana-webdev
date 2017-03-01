@@ -14,13 +14,13 @@
       </div>
     </nav>
 
-    <main class="container">
+    <main class="container" id="widgetList" jga-sortable="">
       <section class="widget" ng-repeat="widget in wgListModel.widgets">
         <div class="widget-edit">
             <a href="#/user/{{wgListModel.userId}}/website/{{wgListModel.websiteId}}/page/{{wgListModel.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
+          <a ng-click="wgListModel.sort()"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
         </div>
 
         <!--<ng-include src="model.getWidgetTemplateUrl(widget.widgetType)"></ng-include>-->

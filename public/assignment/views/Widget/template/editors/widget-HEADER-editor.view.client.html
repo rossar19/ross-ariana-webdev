@@ -1,7 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container pos-rel">
     <div class="navbar-header">
-      <a href="#/user/{{wgEditModel.userId}}/website/{{wgEditModel.websiteId}}/page/{{wgEditModel.pageId}}/widget/">
+      <!-- <a href="#/user/{{wgEditModel.userId}}/website/{{wgEditModel.websiteId}}/page/{{wgEditModel.pageId}}/widget/new">
+        <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
+      </a> -->
+      <a ng-click="wgEditModel.remove(wgEditModel.widget)">
         <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
       </a>
       <a class="navbar-brand glyph-left">
