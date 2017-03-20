@@ -48,38 +48,5 @@
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                 });
         }
-
-        // $(document).ready(function() {
-
-        //     $('#uploadForm').submit(function(e) {
-        //         e.preventDefault();
-        //         console.log("submitted");
-        //         $.ajax({
-        //             success: function(res) {
-        //                 console.log("success");
-        //                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-        //             }
-        //         })
-        //     });
-        // });
-
-        // function upload() {
-        //     var file = $('#widgetUpload')[0].files[0];
-        //     var ob = new Object();
-        //     ob.name = $('#widgetUpload')[0].files[0];
-        //     var Result= JSON.stringify(ob);
-        //     var oba = new Object();
-        //     oba.name = $('#uploadForm')[0];
-        //     console.log(Result);
-        //     console.log(ob);
-        //     console.log(file);
-        //     console.log(oba);
-        //     WidgetService
-        //         .uploadImage(vm.widgetId, oba)
-        //         .success(function(res) {
-        //             console.log("uploaded");
-        //             console.log(res);
-        //         })
-        // }
     }
 })();

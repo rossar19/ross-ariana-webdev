@@ -22,14 +22,13 @@
     		if (isValidRegistration(user)) {
     			UserService
                     .findUserByUsername(user.username)
-                    .success(function(user) {
+                    .then(function(user) {
                         vm.error = "That Username is taken";
-                    })
-                    .error(function(err) {
+                    }, function(err) {
                         vm.error = "Available";
                         UserService
                             .createUser(user)
-                            .success(function(user) {
+                            .then(function(user) {
                                 $location.url("/user/" + user._id);
                             });
                     });
