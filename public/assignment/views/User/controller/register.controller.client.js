@@ -22,7 +22,7 @@
     		if (isValidRegistration(user)) {
     			UserService
                     .findUserByUsername(user.username)
-                    .then(function(user) {
+                    .then(function(newUser) {
                         vm.error = "That Username is taken";
                     }, function(err) {
                         vm.error = "Available";

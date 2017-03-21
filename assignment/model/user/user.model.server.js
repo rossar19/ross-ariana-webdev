@@ -41,10 +41,12 @@ module.exports = function (model) {
 
     function findUserByUsername(username) {
         var deferred = q.defer();
-        userModel.find({username: username}, function(err, users) {
-            var user = users[0];
-            if(err || user.username != username) {
-                deferred.reject(err);
+        userModel.findOne({username: username}, function(err, user) {
+            if (user == null || err) {
+                deferred.reject(new Error("Error!!"));
+            }
+            else if(user.username != username) {
+                deferred.reject(new Error("Error!!"));
             } else {
                 deferred.resolve(user);
             }
@@ -54,11 +56,11 @@ module.exports = function (model) {
 
     function findUserByCredentials(username, password) {
         var deferred = q.defer();
-        userModel.find({username: username, password: password}, 
-            function(err, users) {
-                var user = users[0];
-                if(err || 
-                    !(user.username == username 
+        userModel.findOne({username: username, password: password}, 
+            function(err, user) {
+                if (user == null || err) {
+                    deferred.reject(new Error("Error!!"));
+                } else if(!(user.username == username 
                         && user.password == password)) {
                     deferred.reject(new Error("Error!!"));
                 } else {

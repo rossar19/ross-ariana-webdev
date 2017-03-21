@@ -25,7 +25,7 @@
                         } else {
                             vm.error = 'User not found';
                         }
-                    });
+                    }, function(err) { vm.error = 'User not found'; });
 		        
 			} else {
 	        	vm.error = 'Please fill out all fields';
