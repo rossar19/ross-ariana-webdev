@@ -12,13 +12,8 @@
 
         function init() {
             PageService
-                .findPageById(vm.pageId)
-                .success(function(page) {
-                    vm.page = page;
-                });
-            PageService
                 .findPagesByWebsiteId(vm.webId)
-                .success(function(page) {
+                .then(function(page) {
                     vm.pages = page;
                 });
         }
@@ -36,7 +31,7 @@
 			if (isValidPage(newPage)) {
     			PageService
                     .createPage(vm.webId, newPage)
-                    .success(function(page) {
+                    .then(function(page) {
                         $location.url("/user/" + vm.userId + "/website/" + vm.webId + "/page");
                     });
 			} else {

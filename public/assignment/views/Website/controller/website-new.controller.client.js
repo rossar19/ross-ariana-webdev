@@ -10,12 +10,6 @@
 		vm.create = create;
 
 		function init() {
-			// WebsiteService
-   //              .findWebsiteById(vm.webId)
-   //              .then(function(website) {
-   //                  vm.web = website;
-   //              });
-
 			WebsiteService
                 .findWebsitesByUser(vm.userId)
                 .then(function(websites) {
@@ -37,7 +31,6 @@
 				WebsiteService
 					.createWebsite(vm.userId, newWeb)
 					.then(function(website) {
-						//add website to user's array
 						$location.url("/user/" + vm.userId + "/website");
 					});
 			} else {

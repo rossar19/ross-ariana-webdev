@@ -42,12 +42,10 @@ module.exports = function (model) {
     function findUserByUsername(username) {
         var deferred = q.defer();
         userModel.findOne({username: username}, function(err, user) {
-            if (user == null || err) {
+            if (!user || err) {
                 deferred.reject(new Error("Error!!"));
             }
-            else if(user.username != username) {
-                deferred.reject(new Error("Error!!"));
-            } else {
+             else {
                 deferred.resolve(user);
             }
         });
@@ -58,12 +56,10 @@ module.exports = function (model) {
         var deferred = q.defer();
         userModel.findOne({username: username, password: password}, 
             function(err, user) {
-                if (user == null || err) {
+                if (!user || err) {
                     deferred.reject(new Error("Error!!"));
-                } else if(!(user.username == username 
-                        && user.password == password)) {
-                    deferred.reject(new Error("Error!!"));
-                } else {
+                }
+                 else {
                     deferred.resolve(user);
                 }
             });

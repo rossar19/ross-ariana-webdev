@@ -14,12 +14,12 @@
     	function init() {
             PageService
                 .findPageById(vm.pageId)
-                .success(function(page) {
+                .then(function(page) {
                     vm.page = page;
                 });
             PageService
                 .findPagesByWebsiteId(vm.webId)
-                .success(function(pages) {
+                .then(function(pages) {
                     vm.pages = pages;
                 });
     	}
@@ -28,7 +28,7 @@
     	function update(newPage) {
     		PageService
                 .updatePage(vm.pageId, newPage)
-                .success(function(page) {
+                .then(function(page) {
                     var page = page;
                     if (page == null) {
                         vm.error = 'Oops!  There was a problem updating your page.'
@@ -41,7 +41,7 @@
     	function remove(page) {
     		PageService
                 .deletePage(vm.pageId).
-                success(function() {
+                then(function() {
                     $location.url("/user/" + vm.userId + "/website/" + vm.webId + "/page");
                 });
     	}
