@@ -15,17 +15,17 @@
         function init() {
             WidgetService
                 .findWidgetById(vm.widgetId)
-                .success(function(widget) {
+                .then(function(widget) {
                     vm.widget = widget;
                 });
         }
         init();
 
         function create(type) {
-            var w = { "widgetType": type };
+            var w = { "type": type };
             WidgetService
                 .createWidget(vm.pageId, w)
-                .success(function(widget) {
+                .then(function(widget) {
                     var newWidget = widget;
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
                 });

@@ -14,7 +14,7 @@
 
         WidgetService
             .findWidgetsByPageId(vm.pageId)
-            .success(function(widgets) {
+            .then(function(widgets) {
                 vm.widgets = widgets;
             });
 
@@ -37,7 +37,7 @@
         function sort() {
             WidgetService
                 .sortWidget(vm.pageId, initInt, finalInt)
-                .success(function(widgets) {
+                .then(function(widgets) {
                     vm.widgets = widgets;
                 })
         }

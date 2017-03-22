@@ -17,7 +17,7 @@
         function init() {
             WidgetService
                 .findWidgetById(vm.widgetId)
-                .success(function(widget) {
+                .then(function(widget) {
                     vm.widget = widget;
                 });
         }
@@ -30,7 +30,7 @@
         function update(newWidget) {
             WidgetService
                 .updateWidget(vm.widgetId, newWidget)
-                .success(function(widget) {
+                .then(function(widget) {
                     var widget = widget;
 
                     if(widget == null) {
@@ -44,7 +44,7 @@
         function remove(widget) {
             WidgetService
                 .deleteWidget(vm.widgetId)
-                .success(function(res) {
+                .then(function(res) {
                     $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
                 });
         }

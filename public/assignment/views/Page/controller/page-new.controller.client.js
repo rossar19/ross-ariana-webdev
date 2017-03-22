@@ -28,6 +28,7 @@
 		}
 
     	function create(newPage) {
+            console.log(newPage);
 			if (isValidPage(newPage)) {
     			PageService
                     .createPage(vm.webId, newPage)

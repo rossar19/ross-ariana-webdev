@@ -25,7 +25,7 @@
 
         <!--<ng-include src="model.getWidgetTemplateUrl(widget.widgetType)"></ng-include>-->
 
-        <div ng-switch="widget.widgetType">
+        <div ng-switch="widget.type">
             <div ng-switch-when="HEADER">
                 <ng-include src="'views/Widget/template/widget-header.view.client.html'"></ng-include>
             </div>

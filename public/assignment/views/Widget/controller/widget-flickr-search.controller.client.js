@@ -27,7 +27,7 @@
             url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
             WidgetService
                 .updateWidget(websiteId, pageId, widgetId, {url: url})
-                .success(function(widget) {
+                .then(function(widget) {
                     vm.widget = widget;
                 });
         }
