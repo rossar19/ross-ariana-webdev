@@ -9,7 +9,7 @@
 		function init() {
 			WebsiteService
 				.findWebsitesByUser(vm.userId)
-				.success(function(websites) {
+				.then(function(websites) {
 					vm.websites = websites;
 				});
 		}

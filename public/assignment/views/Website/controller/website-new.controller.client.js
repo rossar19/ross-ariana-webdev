@@ -10,15 +10,15 @@
 		vm.create = create;
 
 		function init() {
-			WebsiteService
-                .findWebsiteById(vm.webId)
-                .success(function(website) {
-                    vm.web = website;
-                });
+			// WebsiteService
+   //              .findWebsiteById(vm.webId)
+   //              .then(function(website) {
+   //                  vm.web = website;
+   //              });
 
 			WebsiteService
                 .findWebsitesByUser(vm.userId)
-                .success(function(websites) {
+                .then(function(websites) {
                     vm.websites = websites;
                 });
 		}
@@ -36,7 +36,8 @@
 			if (isValidWebsite(newWeb)) {
 				WebsiteService
 					.createWebsite(vm.userId, newWeb)
-					.success(function(website) {
+					.then(function(website) {
+						//add website to user's array
 						$location.url("/user/" + vm.userId + "/website");
 					});
 			} else {

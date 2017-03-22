@@ -13,13 +13,13 @@
 		function init() {
 			WebsiteService
                 .findWebsiteById(vm.webId)
-                .success(function(website) {
+                .then(function(website) {
                     vm.web = website;
                 });
 
 			WebsiteService
                 .findWebsitesByUser(vm.userId)
-                .success(function(websites) {
+                .then(function(websites) {
                     vm.websites = websites;
                 });
 		}
@@ -28,12 +28,12 @@
         function update(newWeb) {
             WebsiteService
                 .updateWebsite(vm.webId, newWeb)
-                .success(function(website) {
+                .then(function(website) {
                     var web = website;
                     if(web == null) {
                         vm.error = "Unable to update website";
                     } else {
-                        $location.url("/user/" + vm.web.developerId + "/website");
+                        $location.url("/user/" + vm.userId + "/website");
                     }
                 });
         };
@@ -41,8 +41,8 @@
         function remove(website) {
         	WebsiteService
                 .deleteWebsite(vm.webId)
-                .success(function() {
-                    $location.url("/user/" + vm.web.developerId + "/website");
+                .then(function(status) {
+                    $location.url("/user/" + vm.userId + "/website");
                 });
         }
 

@@ -17,27 +17,42 @@
 		// adds the website parameter instance to the local websites array.
 		// The new website's developerId is set to the userId parameter
 		function createWebsite(userId, website) {
-			return $http.post("/api/user/"+userId+"/website", website);
+			return $http.post("/api/user/"+userId+"/website", website)
+                .then(function (response) {
+                    return response.data;
+                });
 		}
 
 		// retrieves the websites in local websites array whose developerId matches the parameter userId
 		function findWebsitesByUser(userId) {
-			return $http.get("/api/user/"+userId+"/website");
+			return $http.get("/api/user/"+userId+"/website")
+                .then(function (response) {
+                    return response.data;
+                });
 		}
 
 		// retrieves the website in local websites array whose _id matches the websiteId parameter
 		function findWebsiteById(websiteId) {
-			return $http.get("/api/website/"+websiteId);
+			return $http.get("/api/website/"+websiteId)
+                .then(function (response) {
+                    return response.data;
+                });
 		}
 
 		// updates the website in local websites array whose _id matches the websiteId parameter
 		function updateWebsite(websiteId, newWebsite) {
-			return $http.put("/api/website/"+websiteId, newWebsite);
+			return $http.put("/api/website/"+websiteId, newWebsite)
+                .then(function (response) {
+                    return response.data;
+                });
 		}
 
 		// removes the website from local websites array whose _id matches the websiteId parameter
 		function deleteWebsite(websiteId) {
-			return $http.delete("/api/website/"+websiteId);
+			return $http.delete("/api/website/"+websiteId)
+                .then(function (response) {
+                    return response.data;
+                });
 		}
 	}
 })();
