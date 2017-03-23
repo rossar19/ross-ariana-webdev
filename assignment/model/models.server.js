@@ -1,7 +1,7 @@
 module.exports = function(model) {
 	var mongoose = require('mongoose');
 	
-	mongoose.connect('mongodb://127.0.0.1:27017/webdev-assignment');
+	// mongoose.connect('mongodb://127.0.0.1:27017/webdev-assignment');
 
 	var userModel = require ('./user/user.model.server')();
 	var websiteModel = require ('./website/website.model.server')();
