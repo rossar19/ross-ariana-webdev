@@ -1,0 +1,49 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container pos-rel">
+    <div class="navbar-header">
+      <!-- <a href="#/user/{{wgEditModel.userId}}/website/{{wgEditModel.websiteId}}/page/{{wgEditModel.pageId}}/widget/new">
+        <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
+      </a> -->
+      <a ng-click="wgEditModel.remove(wgEditModel.widget)">
+        <span class="pull-left left glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="navbar-brand glyph-left">
+        Widget Edit
+      </a>
+      <a ng-click="wgEditModel.update(wgEditModel.widget)">
+        <span class="pull-right right vcenter glyphicon glyphicon-ok"></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+    <form>
+        <label for="widgetText">Text</label>
+        <input ng-model="wgEditModel.widget.text" name="widgetText" id="widgetText" class="form-control"/>
+        
+        <!-- number of rows the textarea should be; if 1, render as input; else textarea -->
+        <label for="widgetRows">Rows</label>
+        <input ng-model="wgEditModel.widget.rows" name="widgetRows" id="widgetRows" class="form-control" type="number"/>
+        
+        <label for="widgetPlaceHolder">Placeholder</label>
+        <input ng-model="wgEditModel.widget.placeholder" name="widgetPlaceHolder" id="widgetPlaceHolder" class="form-control"/>
+        
+        <!-- TODO: if true, render as text-angular; else render as textarea field -->
+        <label for="widgetFormat">Formatted</label>
+        <input ng-model="wgEditModel.widget.formatted" name="widgetFormat" id="widgetFormat" type="checkbox"/>
+        
+        <!-- <button type="submit" class="btn btn-danger btn-block">Delete</button> -->
+        <a ng-click="wgEditModel.remove(wgEditModel.widget)" class="btn btn-danger btn-block">Delete</a>
+    </form>
+</main>
+
+<footer class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container pos-rel">
+    <div class="navbar-header">
+      <a href="#/user/{{wgEditModel.userId}}" class="navbar-brand">
+        <span class="pull-right right vcenter glyphicon glyphicon-user"></span>
+      </a>
+    </div>
+  </div>
+</footer>
