@@ -45,14 +45,25 @@ module.exports = function () {
     
     function findAllWidgetsForPage(pageId) {
         var deferred = q.defer();
+
+        widgetModel
+            .find({_page: pageId})
+            .populate('pages')
+            .exec(function(err, widgets) {
+                if(err) {
+                    deferred.reject(new Error("Error!!"));
+                } else {
+                    deferred.resolve(widgets);
+                };
+            });
         
-        widgetModel.find({_page: pageId}, function(err, widgets) {
-            if (err) {
-                deferred.reject(new Error("Error!!"));
-            } else {
-                deferred.resolve(widgets);
-            }
-        });
+        // widgetModel.find({_page: pageId}, function(err, widgets) {
+        //     if (err) {
+        //         deferred.reject(new Error("Error!!"));
+        //     } else {
+        //         deferred.resolve(widgets);
+        //     }
+        // });
         return deferred.promise;
     }
     
@@ -106,6 +117,16 @@ module.exports = function () {
 
     function reorderWidget(pageId, start, end) {
         var deferred = q.defer();
+
+        // create an index field in Widget??
+
+        model.pageModel
+            .findPageById(pageId)
+            .then(function(page) {
+                page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
+                page.markModified('widget');
+                page.save()
+            })
 
         return deferred.promise;
     }

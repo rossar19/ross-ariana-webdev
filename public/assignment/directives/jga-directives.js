@@ -18,7 +18,7 @@
                 	final = ui.item.index();
                 	WidgetService
                 		.sortWidget(pid, init, final)
-                		.success(function(o) {});
+                		.then(function(o) {});
                 }
             });
 		}

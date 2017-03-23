@@ -107,9 +107,9 @@ module.exports = function(app, model) {
 
 	function sortWidget(req, res) {
 		var pageId = req.params.pid;
-		var initInt = req.query.initial;
-		var finalInt = req.query.final;
-		var item = widgets[initInt];
+		var start = req.query.initial;
+		var end = req.query.final;
+		// var item = widgets[initInt];
 
 		widgetModel
 			.reorderWidget(pageId, start, end)
@@ -130,6 +130,10 @@ module.exports = function(app, model) {
         var myFile        = req.file;
         // var filename = myFile.name;
 
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var pageId = req.body.pageId;
+
         var originalname  = myFile.originalname; // file name on user's computer
         var filename      = myFile.filename;     // new file name in upload folder
         var path          = myFile.path;         // full path of uploaded file
@@ -137,12 +141,16 @@ module.exports = function(app, model) {
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
 
-        var widget = widgets.find(function(w) {
-			return widgetId == w._id
-		});
+		widgetModel
+			.findWidgetById(widgetId)
+			.then(function(w) {
+		        var widget = w;
+				widget.url = '/../../uploads/'+filename;
+				widget.width = "100%";
 
-		widget.url = '/../../uploads/'+filename;
-		widget.width = "100%";
-        res.json(widget);
+		        var callbackUrl   = "/assignment/#/user/"+userId+"/website/"+websiteId+"/page/" + pageId + "/widget/"+widgetId;
+
+		        res.redirect(callbackUrl);
+			})
     }
 }
