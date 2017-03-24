@@ -23,14 +23,16 @@
     			UserService
                     .findUserByUsername(user.username)
                     .then(function(newUser) {
-                        vm.error = "That Username is taken";
+                        if(newUser.message) {
+                            vm.error = 'Available';
+                            UserService
+                                .createUser(user)
+                                .then(function(user) {
+                                    $location.url("/user/" + user._id);
+                                });
+                        } else { vm.error = "That Username is taken"; }
                     }, function(err) {
-                        vm.error = "Available";
-                        UserService
-                            .createUser(user)
-                            .then(function(user) {
-                                $location.url("/user/" + user._id);
-                            });
+                        vm.error = "Something went horribly wrong...";
                     });
     		} else {
     			vm.error = 'Please fill out all fields';

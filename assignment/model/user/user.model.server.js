@@ -42,7 +42,7 @@ module.exports = function (model) {
     function findUserByUsername(username) {
         var deferred = q.defer();
         userModel.findOne({username: username}, function(err, user) {
-            if (!user || err) {
+            if (err) {
                 deferred.reject(new Error("Error!!"));
             }
              else {
@@ -56,7 +56,7 @@ module.exports = function (model) {
         var deferred = q.defer();
         userModel.findOne({username: username, password: password}, 
             function(err, user) {
-                if (!user || err) {
+                if (err) {
                     deferred.reject(new Error("Error!!"));
                 }
                  else {

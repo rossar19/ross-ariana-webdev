@@ -70,7 +70,9 @@ module.exports = function(app, model) {
 		userModel
 			.findUserByUsername(req.query.username)
 			.then(function(user) {
-				res.json(user);
+				if (!user) { // doing this to prevent console log 404 error
+					res.json({message: "User Not Found"});
+				} else { res.json(user); }
 			}, function(err) {
 				res.sendStatus(404).send({message: "User Not Found"});
 			});
@@ -83,7 +85,9 @@ module.exports = function(app, model) {
 		userModel
 			.findUserByCredentials(username, password)
 			.then(function(user) {
-				res.json(user);
+				if (!user) {
+					res.json({message: "User Not Found"});
+				} else { res.json(user); }
 			}, function(err) {
 				res.sendStatus(404).send({message: "User Not Found"});
 			});

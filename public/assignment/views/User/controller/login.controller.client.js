@@ -20,12 +20,10 @@
 		        UserService
                     .findUserByCredentials(user.username, user.password)
                     .then(function(user) { //returns the object that we get from the server
-                        if(user) {
-                            $location.url("/user/" + user._id);
-                        } else {
+                        if(user.message) {
                             vm.error = 'User not found';
-                        }
-                    }, function(err) { vm.error = 'User not found'; });
+                        } else { $location.url("/user/" + user._id);; }
+                    }, function(err) { vm.error = 'Something went horribly wrong...'; });
 		        
 			} else {
 	        	vm.error = 'Please fill out all fields';
